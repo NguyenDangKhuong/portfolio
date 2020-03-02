@@ -5,12 +5,19 @@ import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import path from 'path'
+import graphqlHTTP from 'express-graphql'
 
 // import { typeDefs, resolvers } from './schema'; 
 
 const port = process.env.PORT || 4000
 
 const app = express()
+
+app.use(cors())
+
+app.use(bodyParser.json())
+
+// mongo db conection
 
 const db = require('./config/db').database
 
@@ -21,24 +28,16 @@ mongoose.connect(db, {
   console.log('Data connnected sucessfully')
 }).catch(err => console.log('Unable connect with data base', err))
 
-app.use(cors())
+// apply graphql 
 
-app.use(bodyParser.json())
-// const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
-// apolloServer.applyMiddleware({ app }) // app is express app
+apolloServer.applyMiddleware({ app }) // app is express app
 
-// const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true });
-
-// const Cat = mongoose.model('Cat', { name: String });
-
-// const kitty = new Cat({ name: 'Zildjian' });
-// kitty.save().then(() => console.log('meow'));
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/index.html'))
-// })
+app.use('/graphqlt', graphqlHTTP({
+  schema,
+  graphiql: true
+}))
 
 app.get('/', (req, res) => {
   res.send('<h1> Hello world </h1>')
