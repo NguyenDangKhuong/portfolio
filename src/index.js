@@ -24,7 +24,8 @@ const db = require('./config/db').database
 
 mongoose.connect(db, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 }).then(() => {
   console.log('Data connnected sucessfully')
 }).catch(err => console.log('Unable connect with data base', err))

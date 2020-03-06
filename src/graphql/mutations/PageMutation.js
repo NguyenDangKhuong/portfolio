@@ -79,9 +79,8 @@ const updatePage = {
       title, 
       description, 
       mediaUrl
-    });
-
-    return updatedPage;
+    })
+    return updatedPage
   },
 };
 
