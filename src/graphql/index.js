@@ -9,11 +9,11 @@ const { userQuery } = require('./queries');
 //   deleteUser,
 // } = require('./mutations');
 const { pageQuery } = require('./queries');
-// const {
-//   createNote,
-//   updateNote,
-//   deleteNote,
-// } = require('./mutations');
+const {
+  createPage,
+  updatePage,
+  deletePage,
+} = require('./mutations');
 
 const RootQuery = new GraphQLObjectType({
   name: 'rootQuery',
@@ -24,10 +24,22 @@ const RootQuery = new GraphQLObjectType({
   }),
 });
 
+const RootMutation = new GraphQLObjectType({
+  name: 'rootMutation',
+  description: 'This is the root mutation which holds all possible WRITE entrypoints for the GraphQL API',
+  fields: () => ({
+    // updateUser,
+    // deleteUser,
+    createPage,
+    // updateNote,
+    // deleteNote,
+  }),
+});
+
 
 const schema = new GraphQLSchema({
   query: RootQuery,
-  // mutation: RootMutation,
+  mutation: RootMutation,
 });
 
 module.exports = { schema };

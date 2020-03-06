@@ -3,93 +3,108 @@ const {
   GraphQLInt,
   GraphQLNonNull,
 } = require('graphql');
-const merge = require('lodash.merge');
+// const merge = require('lodash.merge');
 
-const { NoteType } = require('../types');
-const { Note } = require('../../models');
+const { PageType } = require('../types');
+const { Page } = require('../../mongodb/models');
 
-const createNote = {
-  type: NoteType,
-  description: 'The mutation that allows you to create a new Note',
+const createPage = {
+  type: PageType,
+  description: 'The mutation that allows you to create a new Page',
   args: {
-    userId: {
-      name: 'userId',
-      type: new GraphQLNonNull(GraphQLInt),
-    },
-    note: {
-      name: 'note',
+    name: {
+      name: 'name',
       type: new GraphQLNonNull(GraphQLString),
     },
-  },
-  resolve: (value, { userId, note }) => (
-    Note.create({
-      userId,
-      note,
-    })
-  ),
-};
-
-const updateNote = {
-  type: NoteType,
-  description: 'The mutation that allows you to update an existing Note by Id',
-  args: {
-    id: {
-      name: 'id',
-      type: new GraphQLNonNull(GraphQLInt),
+    title: {
+      name: 'title',
+      type: new GraphQLNonNull(GraphQLString),
     },
-    userId: {
-      name: 'userId',
-      type: new GraphQLNonNull(GraphQLInt),
+    description: {
+      name: 'description',
+      type: new GraphQLNonNull(GraphQLString),
     },
-    note: {
-      name: 'note',
-      type: GraphQLString,
-    },
-  },
-  resolve: async (value, { id, userId, note }) => {
-    const foundNote = await Note.findByPk(id);
-
-    if (!foundNote) {
-      throw new Error(`Note with id: ${id} not found!`);
+    mediaUrl: {
+      name: 'mediaUrl',
+      type: new GraphQLNonNull(GraphQLString),
     }
-
-    const updatedNote = merge(foundNote, {
-      userId,
-      note,
-    });
-
-    return foundNote.update(updatedNote);
+  },
+  resolve: async (value, args) => {
+    const { name, title, description, mediaUrl } = args 
+    const newPage = await new Page({
+      name,
+      title,
+      mediaUrl,
+      description
+    }).save()
+    if(!newPage) {
+      throw new Error('Error')
+  }
+    return newPage
   },
 };
 
-const deleteNote = {
-  type: NoteType,
-  description: 'The mutation that allows you to delete a existing Note by Id',
-  args: {
-    id: {
-      name: 'id',
-      type: new GraphQLNonNull(GraphQLInt),
-    },
-  },
-  resolve: async (value, { id }) => {
-    const foundNote = await Note.findByPk(id);
+// const updatePage = {
+//   type: PageType,
+//   description: 'The mutation that allows you to update an existing Page by Id',
+//   args: {
+//     id: {
+//       name: 'id',
+//       type: new GraphQLNonNull(GraphQLInt),
+//     },
+//     userId: {
+//       name: 'userId',
+//       type: new GraphQLNonNull(GraphQLInt),
+//     },
+//     page: {
+//       name: 'page',
+//       type: GraphQLString,
+//     },
+//   },
+//   resolve: async (value, { id, userId, page }) => {
+//     const foundPage = await Page.findByPk(id);
 
-    if (!foundNote) {
-      throw new Error(`Note with id: ${id} not found!`);
-    }
+//     if (!foundPage) {
+//       throw new Error(`Page with id: ${id} not found!`);
+//     }
 
-    await Note.destroy({
-      where: {
-        id,
-      },
-    });
+//     const updatedPage = merge(foundPage, {
+//       userId,
+//       page,
+//     });
 
-    return foundNote;
-  },
-};
+//     return foundPage.update(updatedPage);
+//   },
+// };
+
+// const deletePage = {
+//   type: PageType,
+//   description: 'The mutation that allows you to delete a existing Page by Id',
+//   args: {
+//     id: {
+//       name: 'id',
+//       type: new GraphQLNonNull(GraphQLInt),
+//     },
+//   },
+//   resolve: async (value, { id }) => {
+//     const foundPage = await Page.findByPk(id);
+
+//     if (!foundPage) {
+//       throw new Error(`Page with id: ${id} not found!`);
+//     }
+
+//     await Page.destroy({
+//       where: {
+//         id,
+//       },
+//     });
+
+//     return foundPage;
+//   },
+// };
 
 module.exports = {
-  createNote,
-  updateNote,
-  deleteNote,
+  createPage,
+  // updatePage,
+  // deletePage,
 };

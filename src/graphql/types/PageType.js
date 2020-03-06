@@ -8,8 +8,12 @@ const PageType = new GraphQLObjectType({
   name: 'Page',
   description: 'This represents a Page',
   fields: () => ({
+    _id: {
+      type: GraphQLString,
+      resolve: (page) => page._id,
+    },
     name: {
-      type: GraphQLInt,
+      type: GraphQLString,
       resolve: (page) => page.name,
     },
     title: {

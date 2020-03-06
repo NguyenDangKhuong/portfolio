@@ -13,14 +13,18 @@ const pageQuery = {
   args: {
     id: {
       name: 'id',
-      type: GraphQLInt,
+      type: GraphQLString,
     },
-    userId: {
-      name: 'userId',
-      type: GraphQLInt,
-    },
-    page: {
-      name: 'page',
+    // userId: {
+    //   name: 'userId',
+    //   type: GraphQLString,
+    // },
+    // page: {
+    //   name: 'page',
+    //   type: GraphQLString,
+    // },
+    name: {
+      name: 'name',
       type: GraphQLString,
     },
     createdAt: {
@@ -32,7 +36,7 @@ const pageQuery = {
       type: GraphQLString,
     },
   },
-  resolve: (user, args) => Page.find()
+  resolve: (user, args) => Page.find({ ...args })
 };
 
 module.exports = { pageQuery };
