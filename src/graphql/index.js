@@ -31,8 +31,8 @@ const RootMutation = new GraphQLObjectType({
     // updateUser,
     // deleteUser,
     createPage,
-    // updateNote,
-    // deleteNote,
+    updatePage,
+    // deletePage,
   }),
 });
 

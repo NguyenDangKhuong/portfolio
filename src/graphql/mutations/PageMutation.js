@@ -44,38 +44,46 @@ const createPage = {
   },
 };
 
-// const updatePage = {
-//   type: PageType,
-//   description: 'The mutation that allows you to update an existing Page by Id',
-//   args: {
-//     id: {
-//       name: 'id',
-//       type: new GraphQLNonNull(GraphQLInt),
-//     },
-//     userId: {
-//       name: 'userId',
-//       type: new GraphQLNonNull(GraphQLInt),
-//     },
-//     page: {
-//       name: 'page',
-//       type: GraphQLString,
-//     },
-//   },
-//   resolve: async (value, { id, userId, page }) => {
-//     const foundPage = await Page.findByPk(id);
+const updatePage = {
+  type: PageType,
+  description: 'The mutation that allows you to update an existing Page by Id',
+  args: {
+    _id: {
+      name: '_id',
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    name: {
+      name: 'name',
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    title: {
+      name: 'title',
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    description: {
+      name: 'description',
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    mediaUrl: {
+      name: 'mediaUrl',
+      type: GraphQLString, // mediaUrl can be null
+    }
+  },
+  resolve: async (value, { _id, name, title, description, mediaUrl }) => {
+    const foundPage = await Page.findById(_id)
+    if (!foundPage) {
+      throw new Error(`Note with id: ${_id} not found!`);
+    }
+    const updatedPage = await Page.findByIdAndUpdate(_id, {
+      name, 
+      title, 
+      description, 
+      mediaUrl
+    });
 
-//     if (!foundPage) {
-//       throw new Error(`Page with id: ${id} not found!`);
-//     }
-
-//     const updatedPage = merge(foundPage, {
-//       userId,
-//       page,
-//     });
-
-//     return foundPage.update(updatedPage);
-//   },
-// };
+    return updatedPage;
+  },
+};
 
 // const deletePage = {
 //   type: PageType,
@@ -105,6 +113,6 @@ const createPage = {
 
 module.exports = {
   createPage,
-  // updatePage,
+  updatePage,
   // deletePage,
 };
