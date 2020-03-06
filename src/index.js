@@ -7,6 +7,8 @@ import cors from 'cors'
 import path from 'path'
 import graphqlHTTP from 'express-graphql'
 
+import { schema } from './graphql'
+
 // import { typeDefs, resolvers } from './schema'; 
 
 const port = process.env.PORT || 4000
@@ -18,7 +20,6 @@ app.use(cors())
 app.use(bodyParser.json())
 
 // mongo db conection
-
 const db = require('./config/db').database
 
 mongoose.connect(db, {
@@ -29,15 +30,26 @@ mongoose.connect(db, {
 }).catch(err => console.log('Unable connect with data base', err))
 
 // apply graphql 
+const apolloServer = new ApolloServer({ 
+  schema 
+});
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
-
-apolloServer.applyMiddleware({ app }) // app is express app
-
-app.use('/graphqlt', graphqlHTTP({
-  schema,
-  graphiql: true
-}))
+apolloServer.applyMiddleware({ 
+  app: app, // app is express app
+  cors: {
+    origin: true,
+    credentials: true,
+    methods: ['POST'],
+    allowedHeaders: [
+      'X-Requested-With',
+      'X-HTTP-Method-Override',
+      'Content-Type',
+      'Accept',
+      'Authorization',
+      'Access-Control-Allow-Origin',
+    ],
+  }
+})
 
 app.get('/', (req, res) => {
   res.send('<h1> Hello world </h1>')

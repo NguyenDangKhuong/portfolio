@@ -1,22 +1,33 @@
-import { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLList } from "graphql";
-import Query from "./types/Query";
-import Mutation from "./types/Mutation";
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+} = require('graphql');
 
-const Schema = new GraphQLSchema({
-  query: Query,
-  mutation: Mutation
-});
+const { userQuery } = require('./queries');
+// const {
+//   updateUser,
+//   deleteUser,
+// } = require('./mutations');
+const { pageQuery } = require('./queries');
+// const {
+//   createNote,
+//   updateNote,
+//   deleteNote,
+// } = require('./mutations');
 
 const RootQuery = new GraphQLObjectType({
-  name: 'RootQueryType',
-  field: {
-    page: {
-      type: new GraphQLList(PageType),
-      resolve(parent, args){
-        
-      }
-    }
-  }
-})
+  name: 'rootQuery',
+  description: 'This is the root query which holds all possible READ entrypoints for the GraphQL API',
+  fields: () => ({
+    // user: userQuery,
+    page: pageQuery,
+  }),
+});
 
-export default Schema;
+
+const schema = new GraphQLSchema({
+  query: RootQuery,
+  // mutation: RootMutation,
+});
+
+module.exports = { schema };

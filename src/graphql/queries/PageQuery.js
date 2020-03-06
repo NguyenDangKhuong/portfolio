@@ -5,11 +5,11 @@ const {
   GraphQLList,
 } = require('graphql');
 
-const { NoteType } = require('../types');
-const { Note } = require('../../models');
+const { PageType } = require('../types');
+import { Page } from '../../mongodb/models';
 
-const noteQuery = {
-  type: new GraphQLList(NoteType),
+const pageQuery = {
+  type: new GraphQLList(PageType),
   args: {
     id: {
       name: 'id',
@@ -19,8 +19,8 @@ const noteQuery = {
       name: 'userId',
       type: GraphQLInt,
     },
-    note: {
-      name: 'note',
+    page: {
+      name: 'page',
       type: GraphQLString,
     },
     createdAt: {
@@ -32,7 +32,7 @@ const noteQuery = {
       type: GraphQLString,
     },
   },
-  resolve: (user, args) => Note.findAll({ where: args }),
+  resolve: (user, args) => Page.find()
 };
 
-module.exports = { noteQuery };
+module.exports = { pageQuery };
