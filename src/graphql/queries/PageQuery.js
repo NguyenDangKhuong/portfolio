@@ -36,7 +36,7 @@ const pageQuery = {
       type: GraphQLString,
     },
   },
-  resolve: (user, args) => Page.find({ ...args })
+  resolve: async (user, args) => await Page.find({ ...args })
 };
 
 module.exports = { pageQuery };

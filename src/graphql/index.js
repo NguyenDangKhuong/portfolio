@@ -32,10 +32,9 @@ const RootMutation = new GraphQLObjectType({
     // deleteUser,
     createPage,
     updatePage,
-    // deletePage,
+    deletePage,
   }),
 });
-
 
 const schema = new GraphQLSchema({
   query: RootQuery,

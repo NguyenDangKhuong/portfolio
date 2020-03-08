@@ -3,7 +3,6 @@ const {
   GraphQLInt,
   GraphQLNonNull,
 } = require('graphql');
-// const merge = require('lodash.merge');
 
 const { PageType } = require('../types');
 const { Page } = require('../../mongodb/models');
@@ -72,7 +71,7 @@ const updatePage = {
   resolve: async (value, { _id, name, title, description, mediaUrl }) => {
     const foundPage = await Page.findById(_id)
     if (!foundPage) {
-      throw new Error(`Note with id: ${_id} not found!`);
+      throw new Error(`Page with id: ${_id} not found!`);
     }
     const updatedPage = await Page.findByIdAndUpdate(_id, {
       name, 
@@ -84,34 +83,30 @@ const updatePage = {
   },
 };
 
-// const deletePage = {
-//   type: PageType,
-//   description: 'The mutation that allows you to delete a existing Page by Id',
-//   args: {
-//     id: {
-//       name: 'id',
-//       type: new GraphQLNonNull(GraphQLInt),
-//     },
-//   },
-//   resolve: async (value, { id }) => {
-//     const foundPage = await Page.findByPk(id);
+const deletePage = {
+  type: PageType,
+  description: 'The mutation that allows you to delete a existing Page by Id',
+  args: {
+    _id: {
+      name: '_id',
+      type: new GraphQLNonNull(GraphQLString),
+    },
+  },
+  resolve: async (value, { _id }) => {
+    const foundPage = await Page.findById(_id);
 
-//     if (!foundPage) {
-//       throw new Error(`Page with id: ${id} not found!`);
-//     }
+    if (!foundPage) {
+      throw new Error(`Page with id: ${_id} not found!`);
+    }
 
-//     await Page.destroy({
-//       where: {
-//         id,
-//       },
-//     });
+    const deletedPage = await Page.findByIdAndRemove(_id)
 
-//     return foundPage;
-//   },
-// };
+    return deletedPage
+  },
+};
 
 module.exports = {
   createPage,
   updatePage,
-  // deletePage,
+  deletePage,
 };
