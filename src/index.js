@@ -1,21 +1,26 @@
+import * as dotenv from "dotenv";
 import { ApolloServer, gql } from 'apollo-server-express';
 import pageApis from './routes/apis/page'
-import express from 'express';
+import express from 'express'
 import mongoose from 'mongoose'
+import helmet from 'helmet'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import path from 'path'
 import graphqlHTTP from 'express-graphql'
-
 import { schema } from './graphql'
 
-// import { typeDefs, resolvers } from './schema'; 
+dotenv.config(); // load enviroment variable from .env to process.env
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4000
 
 const app = express()
 
-app.use(cors())
+app.use(helmet())  // helmet là một collection của 14 middleware function nhỏ mà nó thiết đặt các HTTP Response Headers. Liên kết helmet() không gồm tất cả các middleware function này, nhưng cung cấp các giá trị mặc định như DNS Prefetch Control, Frameguard, Hide Powered-By, HSTS, IE No Open, Don’t Sniff Mimetype và XSS Filter.
+
+app.use(cors()) // cho phép các CORS request bằng method cors()
+
+app.use(express.json()) //cho phep các CORS request bằng method cors(). Sau đó, 
 
 app.use(bodyParser.json())
 

@@ -9,7 +9,6 @@ router.get('/', async (req, res, next) => {
   try {
     const pages = await Page.find()
     res.status(200).json(pages)
-    console.log(pages)
   } catch (err) {
     console.log(err)
   }
