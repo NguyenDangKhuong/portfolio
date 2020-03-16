@@ -64,5 +64,5 @@ app.get('/', (req, res) => {
 app.use('/api/pages', pageApis)
 
 app.listen({ port }, () => {
-  // console.log(`🚀  Server ready at http://localhost:4000`)
+  console.log(`🚀  Server ready at http://localhost:${port}`)
 })
