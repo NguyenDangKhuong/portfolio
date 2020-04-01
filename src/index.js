@@ -31,9 +31,8 @@ mongoose.connect(db, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-}).then(() => {
-  console.log('Data connnected sucessfully')
-}).catch(err => console.log('Unable connect with data base', err))
+}).then(() => console.log('Data connnected sucessfully'))
+.catch(err => console.log('Unable connect with data base', err))
 
 // apply graphql 
 const apolloServer = new ApolloServer({ 
@@ -58,11 +57,11 @@ apolloServer.applyMiddleware({
 })
 
 app.get('/', (req, res) => {
-  res.send('<h1> Hello world </h1>')
+  res.sendFile('index.html', { root: path.join(__dirname, '/') })
 })
 
 app.use('/api/pages', pageApis)
 
 app.listen({ port }, () => {
-  console.log(`🚀  Server ready at http://localhost:${port}`)
+  console.log(`🚀 Server ready at http://localhost:${port} && graphql server at http://localhost:${port}/graphql`)
 })
