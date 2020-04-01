@@ -12,12 +12,6 @@ import {
 import HomepageHeading from './HomePageHeading'
 import getWidth from '../../utils/getWidth'
 
-// const getWidth = () => {
-//   const isSSR = typeof window === 'undefined'
-
-//   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-// }
-// console.log('getWidth', getWidth())
 export default function MobileContainer ({ children }) {
   const [sidebarOpened, setSidebarOpened] = useState<boolean>()
 
