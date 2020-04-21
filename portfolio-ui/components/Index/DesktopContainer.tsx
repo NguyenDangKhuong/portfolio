@@ -8,13 +8,13 @@ import {
   Segment,
   Visibility,
 } from 'semantic-ui-react'
-import HomepageHeading from './HomePageHeading'
+import HomepageHeading from './HomepageHeading'
 import getWidth from '../../utils/getWidth'
 
-export default function DesktopContainer ({
+function DesktopContainer ({
   children
-}) {
-  const [fixed, setFixed] = useState()
+} : any) {
+  const [fixed, setFixed] = useState<boolean>()
 
   const hideFixedMenu = () => setFixed(false)
   const showFixedMenu = () => setFixed(true)
@@ -33,7 +33,7 @@ export default function DesktopContainer ({
           vertical
         >
           <Menu
-            fixed={fixed ? 'top' : null}
+          fixed={fixed ? 'top' : undefined}
             inverted={!fixed}
             pointing={!fixed}
             secondary={!fixed}
@@ -68,3 +68,5 @@ export default function DesktopContainer ({
 DesktopContainer.propTypes = {
   children: PropTypes.node,
 }
+
+export default DesktopContainer

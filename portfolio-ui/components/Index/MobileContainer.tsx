@@ -9,10 +9,10 @@ import {
   Segment,
   Sidebar
 } from 'semantic-ui-react'
-import HomepageHeading from './HomePageHeading'
+import HomepageHeading from './HomepageHeading'
 import getWidth from '../../utils/getWidth'
 
-export default function MobileContainer ({ children }) {
+function MobileContainer ({ children } : any) {
   const [sidebarOpened, setSidebarOpened] = useState<boolean>()
 
   const handleSidebarHide = () => setSidebarOpened(false)
@@ -66,7 +66,6 @@ export default function MobileContainer ({ children }) {
           </Container>
           <HomepageHeading mobile />
         </Segment>
-
         {children}
       </Sidebar.Pusher>
     </Responsive>
@@ -76,3 +75,5 @@ export default function MobileContainer ({ children }) {
 MobileContainer.propTypes = {
   children: PropTypes.node,
 }
+
+export default MobileContainer

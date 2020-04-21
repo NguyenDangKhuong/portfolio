@@ -7,7 +7,7 @@ import {
   Icon
 } from 'semantic-ui-react'
 
-export default function HomepageHeading ({ mobile }){ 
+function HomepageHeading ({ mobile } : any){ 
   return (
   <Container text>
     <Header
@@ -42,3 +42,5 @@ export default function HomepageHeading ({ mobile }){
 HomepageHeading.propTypes = {
   mobile: PropTypes.bool,
 }
+
+export default HomepageHeading

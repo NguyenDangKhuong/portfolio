@@ -1,84 +1,35 @@
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import React from 'react'
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import {
   Button,
   Container,
   Divider,
   Grid,
   Header,
-  Icon,
   Image,
   List,
-  Menu,
-  Responsive,
   Segment,
-  Sidebar,
-  Visibility,
 } from 'semantic-ui-react'
+import ResponsiveContainer from '../components/Index/ResponsiveContainer'
+import { Page } from './types';
 
-import DesktopContainer from '../components/Index/DesktopContainer'
-import MobileContainer from '../components/Index/MobileContainer'
+const GET_PAGE = gql`
+  query pageQuery 
+  {
+    Page {
+      _id,
+      name,
+      title,
+      description,
+      mediaUrl,
+    }
+  }
+`;
 
-
-// Heads up!
-// We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
-// For more advanced usage please check Responsive docs under the "Usage" section.
-const getWidth = () => {
-  const isSSR = typeof window === 'undefined'
-
-  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-}
-
-/* eslint-disable react/no-multi-comp */
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
- */
-const HomepageHeading = ({ mobile }) => (
-  <Container text>
-    <Header
-      as='h1'
-      content='Imagine-a-Company'
-      inverted
-      style={{
-        fontSize: mobile ? '2em' : '4em',
-        fontWeight: 'normal',
-        marginBottom: 0,
-        marginTop: mobile ? '1.5em' : '3em',
-      }}
-    />
-    <Header
-      as='h2'
-      content='Do whatever you want when you want to.'
-      inverted
-      style={{
-        fontSize: mobile ? '1.5em' : '1.7em',
-        fontWeight: 'normal',
-        marginTop: mobile ? '0.5em' : '1.5em',
-      }}
-    />
-  </Container>
-)
-
-HomepageHeading.propTypes = {
-  mobile: PropTypes.bool,
-}
-
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
-
-
-const ResponsiveContainer = ({ children }) => (
-  <div>
-    <DesktopContainer>{children}</DesktopContainer>
-    <MobileContainer>{children}</MobileContainer>
-  </div>
-)
-
-ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
-}
+const { data } = useQuery(GET_PAGE)
+console.log('data', data)
 
 const HomepageLayout = () => (
   <ResponsiveContainer>

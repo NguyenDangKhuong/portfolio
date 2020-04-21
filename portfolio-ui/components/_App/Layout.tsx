@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { Container } from 'semantic-ui-react'
 import HeadContent from './HeadContent'
 
-function Layout ({ children }) {
+function Layout ({ children } : {children: any}) {
   return (
     <>
       <Head>
