@@ -27,7 +27,7 @@ const PageType = new GraphQLObjectType({
     mediaUrl: {
       type: GraphQLString,
       resolve: (page) => page.mediaUrl,
-    },
+    }
   }),
 });
 
