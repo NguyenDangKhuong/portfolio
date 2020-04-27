@@ -8,10 +8,10 @@ import {
   Segment,
   Visibility,
 } from 'semantic-ui-react'
-import HomepageHeading from './HomepageHeading'
+// import HomepageHeading from './HomepageHeading'
 import getWidth from '../../utils/getWidth'
 
-function DesktopContainer ({
+function DesktopHeader ({
   children
 } : any) {
   const [fixed, setFixed] = useState<boolean>()
@@ -56,7 +56,7 @@ function DesktopContainer ({
               </Menu.Item>
             </Container>
           </Menu>
-          <HomepageHeading />
+          {/* <HomepageHeading /> */}
         </Segment>
       </Visibility>
 
@@ -65,8 +65,8 @@ function DesktopContainer ({
   )
 }
 
-DesktopContainer.propTypes = {
+DesktopHeader.propTypes = {
   children: PropTypes.node,
 }
 
-export default DesktopContainer
+export default DesktopHeader

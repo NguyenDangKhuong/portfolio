@@ -12,7 +12,6 @@ import {
   List,
   Segment,
 } from 'semantic-ui-react'
-import ResponsiveContainer from '../components/Index/ResponsiveContainer'
 // import { Page } from './types';
 
 const GET_PAGE = gql`
@@ -31,7 +30,7 @@ const HomepageLayout = () => {
   const { data } = useQuery(GET_PAGE)
   console.log('data', data)
   return (
-    <ResponsiveContainer>
+    <>
       <Segment style={{ padding: '8em 0em' }} vertical>
         <Grid container stackable verticalAlign='middle'>
           <Grid.Row>
@@ -156,7 +155,7 @@ const HomepageLayout = () => {
           </Grid>
         </Container>
       </Segment>
-    </ResponsiveContainer>
+    </>
   )
 }
 

@@ -36,8 +36,7 @@ function HomepageHeading ({ mobile } : any){
       <Icon name='arrow right' />
     </Button>
   </Container>
-)
-}
+)}
 
 HomepageHeading.propTypes = {
   mobile: PropTypes.bool,
