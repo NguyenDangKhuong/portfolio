@@ -12,7 +12,7 @@ import {
 // import HomepageHeading from './HomepageHeading'
 import getWidth from '../../utils/getWidth'
 
-function MobileHeader ({ children } : any) {
+function MobileContainer ({ children } : any) {
   const [sidebarOpened, setSidebarOpened] = useState<boolean>()
 
   const handleSidebarHide = () => setSidebarOpened(false)
@@ -72,8 +72,8 @@ function MobileHeader ({ children } : any) {
   )
 }
 
-MobileHeader.propTypes = {
+MobileContainer.propTypes = {
   children: PropTypes.node,
 }
 
-export default MobileHeader
+export default MobileContainer

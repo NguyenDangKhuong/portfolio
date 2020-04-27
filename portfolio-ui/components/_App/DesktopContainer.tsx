@@ -11,7 +11,7 @@ import {
 // import HomepageHeading from './HomepageHeading'
 import getWidth from '../../utils/getWidth'
 
-function DesktopHeader ({
+function DesktopContainer ({
   children
 } : any) {
   const [fixed, setFixed] = useState<boolean>()
@@ -65,8 +65,8 @@ function DesktopHeader ({
   )
 }
 
-DesktopHeader.propTypes = {
+DesktopContainer.propTypes = {
   children: PropTypes.node,
 }
 
-export default DesktopHeader
+export default DesktopContainer

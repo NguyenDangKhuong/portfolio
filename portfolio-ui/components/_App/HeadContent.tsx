@@ -54,5 +54,10 @@ export default () => (
     /> */}
     <meta name="msapplication-TileColor" content="#00df94" />
     <meta name="theme-color" content="#00df94" />
+    {/* Stylesheets */}
+    <link rel='stylesheet' type='text/css' href='/public/styles.css' />
+    <link rel='stylesheet' type='text/css' href='/public/nprogress.css' />
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
+    <title>Khuong 's portfolio</title>
   </>
 );

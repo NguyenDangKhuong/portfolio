@@ -22,8 +22,9 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 function KhuongApp({ Component, pageProps } : {Component: any, pageProps: any}) {
   return (
     <ApolloProvider client={client}>
-      <Layout {...pageProps}/>
-      <Component {...pageProps} />
+      <Layout {...pageProps}>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   )
 }
