@@ -8,14 +8,37 @@ import {
   Segment,
   Visibility,
 } from 'semantic-ui-react'
+import Link from 'next/link'
+import Router, { useRouter } from 'next/router'
+import NProgress from 'nprogress'
 // import HomepageHeading from './HomepageHeading'
 import getWidth from '../../utils/getWidth'
+
+if (typeof window !== "undefined") {
+  NProgress.configure({ showSpinner: false });
+
+  Router.events.on("routeChangeStart", () => {
+    NProgress.start();
+  });
+
+  Router.events.on("routeChangeComplete", () => {
+    NProgress.done();
+  });
+
+  Router.events.on("routeChangeError", () => {
+    NProgress.done();
+  });
+}
 
 function DesktopContainer ({
   children
 } : any) {
+  const router = useRouter()
   const [fixed, setFixed] = useState<boolean>()
 
+  const isActive = (route: string) => {
+    return route === router.pathname
+  }
   const hideFixedMenu = () => setFixed(false)
   const showFixedMenu = () => setFixed(true)
 
@@ -29,7 +52,7 @@ function DesktopContainer ({
         <Segment
           inverted
           textAlign='center'
-          style={{ minHeight: 700, padding: '1em 0em' }}
+          style={{ minHeight: 500 }}
           vertical
         >
           <Menu
@@ -40,12 +63,17 @@ function DesktopContainer ({
             size='large'
           >
             <Container>
-              <Menu.Item as='a' active>
-                Home
-              </Menu.Item>
+              <Link href='/'>
+                <Menu.Item as='a' active={isActive('/')}>
+                  Home
+                </Menu.Item>
+              </Link>
               <Menu.Item as='a'>Work</Menu.Item>
               <Menu.Item as='a'>Company</Menu.Item>
               <Menu.Item as='a'>Careers</Menu.Item>
+              <Link href='/profile'>
+                <Menu.Item as='a' active={isActive('/profile')}>Profile</Menu.Item>
+              </Link>
               <Menu.Item position='right'>
                 <Button as='a' inverted={!fixed}>
                   Log in
