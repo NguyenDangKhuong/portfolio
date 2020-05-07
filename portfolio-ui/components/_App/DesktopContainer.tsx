@@ -74,6 +74,9 @@ function DesktopContainer ({
               <Link href='/profile'>
                 <Menu.Item as='a' active={isActive('/profile')}>Profile</Menu.Item>
               </Link>
+              <Link href='/crud' >
+                <Menu.Item as='a' active={isActive('/crud')}>CRUD Example</Menu.Item>
+              </Link>
               <Menu.Item position='right'>
                 <Button as='a' inverted={!fixed}>
                   Log in
