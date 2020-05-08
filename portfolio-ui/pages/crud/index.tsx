@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { Tab, Container } from 'semantic-ui-react'
+import GraphqlCrud from '../../components/organisms/Crud/GraphqlCrud'
+import RestfulCrud from '../../components/organisms/Crud/RestfulCrud'
+import styles from './styles.module.scss'
 
 function Crud ({  } : any) {
   const [typeApi, setTypeApi] = useState(1) 
   console.log(typeApi, setTypeApi)
   return (
     <Container>
-      <Tab panes={[
-        { menuItem: 'Graphql', pane: <Tab.Pane key='Graphql'>Tab 2 Content</Tab.Pane> },
-        { menuItem: 'Restful', pane: <Tab.Pane key='Restful'>Tab 2 Content</Tab.Pane> },
+      <Tab className={styles.tabContainer} panes={[
+        { menuItem: 'Graphql', pane: <Tab.Pane><GraphqlCrud key='graphql'/></Tab.Pane>},
+        { menuItem: 'Restful', pane: <Tab.Pane><RestfulCrud key='Res'/></Tab.Pane>},
       ]} 
       renderActiveOnly={false} 
       />

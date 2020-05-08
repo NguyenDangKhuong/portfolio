@@ -6,7 +6,7 @@ import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 
-import Layout from '../components/_App/Layout'
+import Layout from '../components/organisms/_App/Layout'
 
 const cache = new InMemoryCache();
 const link = createHttpLink({

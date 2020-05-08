@@ -23,9 +23,13 @@ const UserType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (user) => user.email,
     },
-    notes: {
-      type: new GraphQLList(NoteType),
-      resolve: (user) => user.getNotes(),
+    avatar: {
+      type: GraphQLString,
+      resolve: (user) => user.avatar,
+    },
+    images: {
+      type: GraphQLList,
+      resolve: (user) => user.images,
     },
     createdAt: {
       type: GraphQLString,

@@ -10,7 +10,7 @@ import {
   Sidebar
 } from 'semantic-ui-react'
 // import HomepageHeading from './HomepageHeading'
-import getWidth from '../../utils/getWidth'
+import getWidth from '../../../utils/getWidth'
 
 function MobileContainer ({ children } : any) {
   const [sidebarOpened, setSidebarOpened] = useState<boolean>()

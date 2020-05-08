@@ -22,9 +22,13 @@ const userQuery = {
       name: 'email',
       type: GraphQLString,
     },
-    notes: {
-      name: 'notes',
+    avatar: {
+      name: 'avatar',
       type: GraphQLString,
+    },
+    images: {
+      name: 'images',
+      type: GraphQLList,
     },
     createdAt: {
       name: 'createdAt',

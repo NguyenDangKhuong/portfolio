@@ -11,8 +11,8 @@ import {
 import Link from 'next/link'
 import Router, { useRouter } from 'next/router'
 import NProgress from 'nprogress'
-// import HomepageHeading from './HomepageHeading'
-import getWidth from '../../utils/getWidth'
+// import HomepageHeading from '../HomepageHeading'
+import getWidth from '../../../utils/getWidth'
 
 if (typeof window !== "undefined") {
   NProgress.configure({ showSpinner: false });
