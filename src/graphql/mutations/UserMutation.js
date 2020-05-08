@@ -8,7 +8,6 @@ const { UserType } = require('../types');
 const { ImageInputType } = require('../inputTypes');
 const { User } = require('../../mongodb/models');
 
-console.log(ImageInputType)
 const createUser = {
   type: UserType,
   description: 'The mutation that allows you to create a new Page',
@@ -29,10 +28,10 @@ const createUser = {
       name: 'avatar',
       type: new GraphQLNonNull(GraphQLString),
     },
-    // images: {
-    //   name: 'images',
-    //   type: new GraphQLNonNull(ImageInputType)
-    // }
+    images: {
+      name: 'images',
+      type: GraphQLList(ImageInputType)
+    }
   },
   resolve: async (value, args) => {
     const { username, password, email, avatar, images } = args 

@@ -5,12 +5,11 @@ const {
 } = require('graphql');
 
 const ImageInputType = new GraphQLInputObjectType({
-  name: 'InputImage',
-  description: 'This represents a Image',
-  fields: () => ({
+  name: 'ImageInputType',
+  fields: {
     id: { type: GraphQLID },
     url: { type: GraphQLString }
-  }),
+  },
 });
 
 module.exports = { ImageInputType };

@@ -11,9 +11,9 @@ const UserType = new GraphQLObjectType({
   name: 'User',
   description: 'This represents a User',
   fields: () => ({
-    id: {
+    _id: {
       type: GraphQLInt,
-      resolve: (user) => user.id,
+      resolve: (user) => user._id,
     },
     username: {
       type: GraphQLString,

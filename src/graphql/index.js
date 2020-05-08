@@ -3,18 +3,15 @@ const {
   GraphQLObjectType,
 } = require('graphql');
 
-const { userQuery } = require('./queries');
 const {
   createUser,
   // updateUser,
   // deleteUser,
-} = require('./mutations');
-const { pageQuery } = require('./queries');
-const {
   createPage,
   updatePage,
   deletePage,
 } = require('./mutations');
+const { pageQuery, userQuery } = require('./queries');
 
 const RootQuery = new GraphQLObjectType({
   name: 'rootQuery',
