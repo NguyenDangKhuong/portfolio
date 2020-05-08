@@ -27,6 +27,18 @@ const pageQuery = {
       name: 'name',
       type: GraphQLString,
     },
+    title: {
+      name: 'title',
+      type: GraphQLString,
+    },
+    description: {
+      name: 'description',
+      type: GraphQLString,
+    },
+    mediaUrl: {
+      name: 'mediaUrl',
+      type: GraphQLString,
+    },
     createdAt: {
       name: 'createdAt',
       type: GraphQLString,

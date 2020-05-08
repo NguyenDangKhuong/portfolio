@@ -2,10 +2,11 @@ const {
   GraphQLInt,
   GraphQLString,
   GraphQLList,
+  // GraphQLObjectType
 } = require('graphql');
 
-const { UserType } = require('../types');
-const { User } = require('../../models');
+const { UserType, ImageType } = require('../types');
+const { User } = require('../../mongodb/models');
 
 const userQuery = {
   type: new GraphQLList(UserType),
@@ -18,6 +19,10 @@ const userQuery = {
       name: 'username',
       type: GraphQLString,
     },
+    password: {
+      name: 'password',
+      type: GraphQLString,
+    },
     email: {
       name: 'email',
       type: GraphQLString,
@@ -26,10 +31,10 @@ const userQuery = {
       name: 'avatar',
       type: GraphQLString,
     },
-    images: {
-      name: 'images',
-      type: GraphQLList,
-    },
+    // images: {
+    //   name: 'images',
+    //   type: new GraphQLList(ImageType)
+    // },
     createdAt: {
       name: 'createdAt',
       type: GraphQLString,
@@ -39,7 +44,7 @@ const userQuery = {
       type: GraphQLString,
     },
   },
-  resolve: (user, args) => User.findAll({ where: args }),
+  resolve: async (user, args) => await User.find({ ...args })
 };
 
 module.exports = { userQuery };

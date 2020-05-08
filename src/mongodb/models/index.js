@@ -1,7 +1,7 @@
 import Page from './page'
-// const { User } = require('./User');
+import User from './user'
 
 export {
   Page,
-  // User,
+  User,
 };

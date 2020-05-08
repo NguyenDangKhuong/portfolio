@@ -5,7 +5,7 @@ const {
   GraphQLList,
 } = require('graphql');
 
-const { NoteType } = require('./NoteType');
+import { ImageType }  from './ImageType';
 
 const UserType = new GraphQLObjectType({
   name: 'User',
@@ -19,6 +19,10 @@ const UserType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (user) => user.username,
     },
+    password: {
+      type: GraphQLString,
+      resolve: (user) => user.password,
+    },
     email: {
       type: GraphQLString,
       resolve: (user) => user.email,
@@ -28,7 +32,7 @@ const UserType = new GraphQLObjectType({
       resolve: (user) => user.avatar,
     },
     images: {
-      type: GraphQLList,
+      type: new GraphQLList(ImageType),
       resolve: (user) => user.images,
     },
     createdAt: {

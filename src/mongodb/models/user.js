@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const { String, List } = mongoose.Schema.Types
+const { String, Array } = mongoose.Schema.Types
 
 const UserSchema = new mongoose.Schema({
   id: {
@@ -8,6 +8,10 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   username: {
+    type: String,
+    required: true
+  },
+  password: {
     type: String,
     required: true
   },
@@ -20,15 +24,15 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   images: {
-    type: List,
+    type: Array,
     required: true
   },
   createdAt: {
-    type: GraphQLString,
+    type: String,
     resolve: (user) => user.createdAt,
   },
   updatedAt: {
-    type: GraphQLString,
+    type: String,
     resolve: (user) => user.updatedAt,
   },
 })
