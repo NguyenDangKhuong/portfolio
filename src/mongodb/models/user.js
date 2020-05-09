@@ -1,12 +1,8 @@
 import mongoose from 'mongoose'
 
-const { String, Array } = mongoose.Schema.Types
+const { String, Mixed } = mongoose.Schema.Types
 
 const UserSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true
-  },
   username: {
     type: String,
     required: true
@@ -24,7 +20,7 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   images: {
-    type: Array,
+    type: Mixed,
     required: true
   },
   createdAt: {

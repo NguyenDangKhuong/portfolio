@@ -30,7 +30,7 @@ const createUser = {
     },
     images: {
       name: 'images',
-      type: GraphQLList(ImageInputType)
+      type: new GraphQLList(ImageInputType)
     }
   },
   resolve: async (value, args) => {
