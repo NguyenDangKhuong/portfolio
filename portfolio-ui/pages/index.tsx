@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types'
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
 import {
   Button,
   Container,
@@ -23,7 +23,7 @@ const GET_PAGE = gql`
       mediaUrl,
     }
   }
-`;
+`
 
 const IndexPage = () => {
   const { data } = useQuery(GET_PAGE)

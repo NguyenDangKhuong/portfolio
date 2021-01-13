@@ -8,7 +8,6 @@ function Layout ({ children } : {children: any}) {
     <>
       <Head>
         <HeadContent />
-        {/* Stylesheets */}
         <link rel='stylesheet' type='text/css' href='/styles.css' />
         <link rel='stylesheet' type='text/css' href='/nprogress.css' />
         <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />

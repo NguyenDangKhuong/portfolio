@@ -1,7 +1,10 @@
-export default () => (
+import React, { FunctionComponent } from 'react'
+
+const HeadContent = ({}: any) => (
   <>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charSet="utf-8" />
+    
     {/* <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -25,10 +28,10 @@ export default () => (
       href="/static/favicon/safari-pinned-tab.svg"
       color="#0041df"
     /> */}
-    <meta name="msapplication-TileColor" content="#00df94" />
+    {/* <meta name="msapplication-TileColor" content="#00df94" />
     <meta name="theme-color" content="#00df94" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charSet="utf-8" />
+    <meta charSet="utf-8" /> */}
     {/* <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -52,7 +55,8 @@ export default () => (
       href="/static/favicon/safari-pinned-tab.svg"
       color="#0041df"
     /> */}
-    <meta name="msapplication-TileColor" content="#00df94" />
-    <meta name="theme-color" content="#00df94" />
+    {/* <meta name="msapplication-TileColor" content="#00df94" />
+    <meta name="theme-color" content="#00df94" /> */}
   </>
 );
+export default HeadContent

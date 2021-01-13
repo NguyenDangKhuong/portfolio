@@ -5,6 +5,8 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { Provider } from 'react-redux'
+import store from '../redux/store'
 
 import Layout from '../components/organisms/_App/Layout'
 
@@ -22,9 +24,11 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 function KhuongApp({ Component, pageProps } : {Component: any, pageProps: any}) {
   return (
     <ApolloProvider client={client}>
-      <Layout {...pageProps}>
-        <Component {...pageProps} />
-      </Layout>
+      <Provider store={store}>
+          <Layout {...pageProps}>
+            <Component {...pageProps} />
+          </Layout>
+      </Provider>
     </ApolloProvider>
   )
 }

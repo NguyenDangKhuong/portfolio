@@ -1,9 +1,26 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
+// import { useSelector, useDispatch } from 'react-redux'
+// import { fetchUser } from '../../../redux/modules/user'
 import { Table,  Image, Header} from 'semantic-ui-react'
 
-function GraphqlCrudGetList () { 
+// interface RootState {
+//   user: {
+//     userList: []
+//   }
+// }
 
+function GraphqlCrudGetList () { 
+  // const {
+  //   userList,
+  // } = useSelector((state: RootState) => state.user)
+
+  // const dispatch = useDispatch()
+  // useEffect(()=>{
+  //   dispatch(fetchUser())
+  // },[])
+
+  // console.log('userList', userList)
 
   return (
     <Table striped>
