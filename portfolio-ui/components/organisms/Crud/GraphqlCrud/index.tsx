@@ -3,13 +3,13 @@ import React from 'react'
 import { Tab } from 'semantic-ui-react'
 import GraphqlCrudGetList from '../../../molecules/GraphqlCrudGetList'
 
-interface Props {
-  user: 
-}
+// interface Props {
+//   user: 
+// }
 
-const GraphqlCrud: React.FC<Props> = ({ page,  }) { 
+const GraphqlCrud: React.FC<Props> = ({ page,  user}) => { 
   const panes = [
-    { menuItem: 'Tab 1', render: () => <Tab.Pane><GraphqlCrudGetList page={page} /></Tab.Pane> },
+    { menuItem: 'Tab 1', render: () => <Tab.Pane><GraphqlCrudGetList user={user} page={page} /></Tab.Pane> },
     { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
     { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
   ]
