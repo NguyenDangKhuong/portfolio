@@ -74,10 +74,16 @@ function DesktopContainer ({
               <Link href='/profile'>
                 <Menu.Item as='a' active={isActive('/profile')}>Profile</Menu.Item>
               </Link>
-              <Link href='/crud' >
+              <Link href='/crud'>
                 <Menu.Item as='a' active={isActive('/crud')}>CRUD Example</Menu.Item>
               </Link>
+              <Menu.Item as='a' active={isActive('/shop')}>
+                <a href='https://ndkhuong-react-reserve.vercel.app/'>
+                  Shop
+                </a>
+              </Menu.Item>
               <Menu.Item position='right'>
+
                 <Button as='a' inverted={!fixed}>
                   Log in
                 </Button>

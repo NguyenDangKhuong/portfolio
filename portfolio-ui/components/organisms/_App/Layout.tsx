@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import HeadContent from './HeadContent'
+// import HeadContent from './HeadContent'
 import ResponsiveContainer from './ResponsiveContainer'
 import Footer from './Footer'
 
@@ -7,7 +7,9 @@ function Layout ({ children } : {children: any}) {
   return (
     <>
       <Head>
-        <HeadContent />
+        {/* <HeadContent /> */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
         <link rel='stylesheet' type='text/css' href='/styles.css' />
         <link rel='stylesheet' type='text/css' href='/nprogress.css' />
         <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />

@@ -19,6 +19,14 @@ const userQuery = {
       name: 'username',
       type: GraphQLString,
     },
+    nickname: {
+      name: 'nickname',
+      type: GraphQLString,
+    },
+    position: {
+      name: 'position',
+      type: GraphQLString,
+    },
     password: {
       name: 'password',
       type: GraphQLString,

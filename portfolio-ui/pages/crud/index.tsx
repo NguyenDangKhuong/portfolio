@@ -19,7 +19,20 @@ const GET_PAGE = gql`
       mediaUrl,
     }
   }
-`;
+`
+
+const GET_USER = gql`
+  query getPage {
+    page {
+      _id,
+      name,
+      title,
+      description,
+      mediaUrl,
+    }
+}
+`
+
 
 const Crud = ({  } : any) => {
   const dispatch = useDispatch()
@@ -40,8 +53,8 @@ const Crud = ({  } : any) => {
   return (
     <Container>
       <Tab className={styles.tabContainer} panes={[
-        { menuItem: 'Graphql', pane: <Tab.Pane key={1}><GraphqlCrud key='graphql'/></Tab.Pane>},
-        { menuItem: 'Restful', pane: <Tab.Pane key={2}><RestfulCrud key='Res'/></Tab.Pane>},
+        { menuItem: 'Graphql', pane: <Tab.Pane key={1}><GraphqlCrud key='graphql' page={data}/></Tab.Pane>},
+        { menuItem: 'Restful', pane: <Tab.Pane key={2}><RestfulCrud key='rest'/></Tab.Pane>},
       ]} 
       renderActiveOnly={false} 
       />

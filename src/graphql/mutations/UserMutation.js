@@ -16,6 +16,14 @@ const createUser = {
       name: 'username',
       type: new GraphQLNonNull(GraphQLString),
     },
+    nickname: {
+      name: 'nickname',
+      type: new GraphQLNonNull(GraphQLString),
+    },
+    position: {
+      name: 'position',
+      type: new GraphQLNonNull(GraphQLString),
+    },
     password: {
       name: 'password',
       type: new GraphQLNonNull(GraphQLString),
@@ -34,8 +42,8 @@ const createUser = {
     }
   },
   resolve: async (value, args) => {
-    const { username, password, email, avatar, images } = args 
-    const newUser = await new User({ username, password, email, avatar, images }).save()
+    const { username, nickname, position, password, email, avatar, images } = args 
+    const newUser = await new User({ username, password, nickname, position, email, avatar, images }).save()
     if(!newUser) {
       throw new Error('Error')
     }

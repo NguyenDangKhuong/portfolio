@@ -2,10 +2,13 @@
     "env": {
         "browser": true,
         "es6": true,
+        "commonjs":true,
+        "es2020":true,
         "jest": true
     },
     "extends": [
         "standard",
+        "standard-with-typescript",
         "standard-jsx",
         "plugin:react/recommended",
         "plugin:css-modules/recommended"
@@ -24,11 +27,33 @@
     "plugins": [
         "react",
         "react-hooks",
-        "css-modules"
+        "css-modules",
+        "simple-import-sort"
     ],
     "rules": {
         "react/prop-types": 0,
+        "react/jsx-indent": "off",
+        "react/display-name": "off",
+        "no-console": "error",
         "standard/computed-property-even-spacing": "off",
-        "react-hooks/rules-of-hooks": "error"
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "no-unused-vars": ["error", { "args": "all", "argsIgnorePattern": "^_" }],
+        "simple-import-sort/sort": [
+        "error",
+        {
+            "groups": [
+            [
+                "^react",
+                "^\\u0000",
+                "^@?\\w",
+                "^[^.]",
+                "^.+/utils/",
+                "^\\.",
+                "^.+\\.scss$"
+            ]
+            ]
+        }
+        ]
     }
 }
