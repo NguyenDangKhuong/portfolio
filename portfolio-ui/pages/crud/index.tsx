@@ -9,6 +9,8 @@ import RestfulCrud from '../../components/organisms/Crud/RestfulCrud'
 import styles from './styles.module.scss'
 import { updateUserList } from '../../redux/modules/user'
 
+export interface 
+
 const GET_PAGE = gql`
   query getPage {
     page {
@@ -33,11 +35,24 @@ const GET_USER = gql`
 }
 `
 
+const GET_USERS = gql`
+  query getUser {
+    user {
+      username,
+      password,
+      email,
+      avatar,
+      images { url }
+    }
+  }
+`
 
 const Crud = ({  } : any) => {
   const dispatch = useDispatch()
   const { data } = useQuery(GET_PAGE)
   console.log('data', data)
+  const { data: userData } = useQuery(GET_USERS)
+  console.log('aaa', userData)
   
   useEffect(() => {
     dispatch(updateUserList(data))
@@ -53,7 +68,7 @@ const Crud = ({  } : any) => {
   return (
     <Container>
       <Tab className={styles.tabContainer} panes={[
-        { menuItem: 'Graphql', pane: <Tab.Pane key={1}><GraphqlCrud key='graphql' page={data}/></Tab.Pane>},
+        { menuItem: 'Graphql', pane: <Tab.Pane key={1}><GraphqlCrud key='graphql' user={userData} page={data}/></Tab.Pane>},
         { menuItem: 'Restful', pane: <Tab.Pane key={2}><RestfulCrud key='rest'/></Tab.Pane>},
       ]} 
       renderActiveOnly={false} 

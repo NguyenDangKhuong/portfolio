@@ -7,20 +7,7 @@ const USER = 'USER'
 
 export const UPDATE_LIST_USER = `${USER}/UPDATE_LIST_USER`
 
-// const GET_USERS = gql`
-//   query getUser {
-//     user {
-//       username,
-//       password,
-//       email,
-//       avatar,
-//       images { url }
-//     }
-//   }
-// `
-// const { data } = useQuery(GET_USERS)
-// const aaa = useQuery(GET_USERS)
-// console.log('aaa', aaa)
+
 
 // Action Creator
 // export const fetchUser = () => async (dispatch: any) => {
